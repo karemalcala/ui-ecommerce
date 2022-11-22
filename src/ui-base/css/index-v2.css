@@ -1,0 +1,364 @@
+:root {
+  /* colors */
+  --white: #F1F1F1;
+  --black: #1F1F1F;
+  --gray: rgb(112 111 111 / 58%);
+  --rose: #f14bb2;
+
+  /* medidas */
+  --logo: 190px;
+  /* --noria-square: 340px; */
+  --noria-square: 255px;
+  /* 408px antes */
+  --noria-circle: 315px;
+  --noria-letter: calc(315px / 2);
+  --noria-lentes: 165px;
+
+  --border-radius-circle: 50%;
+
+  --svg: 22px;
+  --velocidad-transitions: .2s;
+  --velocidad-transitions-lineas: .5s;
+}
+
+
+@font-face {
+  font-family: 'roboto';
+  src: url('fonts/Roboto-Regular.ttf') format('truetype');
+  font-style: normal;
+  font-weight: normal;
+}
+
+
+* {
+  /* margin: 0;
+  padding: 0; */
+  /* /box-sizing: border-box; */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'roboto', Helvetica, sans-serif;
+  font-size: .9em;
+  background-color: black;
+  color: var(--white) !important;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--white);
+  text-decoration: none;
+}
+
+svg {
+  fill: var(--white);
+  width: var(--svg);
+  height: var(--svg);
+}
+
+
+
+
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  pointer-events: none;
+  background-image: url(../assets/images/noise.png);
+  background-repeat: repeat;
+  opacity: 0.3;
+  visibility: visible;
+  mix-blend-mode: difference;
+}
+
+/* SCROLL */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+  background: var(--black);
+  border: none;
+}
+
+::-webkit-scrollbar-track:hover,
+::-webkit-scrollbar-track:active {
+  background: var(--black);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b3b3b3;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background-color: #999999;
+}
+
+
+
+
+/* HEADER */
+header {
+  margin-bottom: 2em;
+}
+
+.pre-header {
+  height: 52px;
+  background-color: black;
+  color: var(--white) !important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 2%;
+}
+
+.pre-header a {
+  color: var(--white) !important;
+}
+
+.container-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 5px 15px;
+  padding: 10px;
+  padding-left: 0;
+}
+
+.header__logo {
+  margin-top: 11px;
+}
+
+.header__logo__container {
+  width: var(--logo);
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+}
+
+.logo__image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.hero {}
+
+
+
+
+
+
+
+
+
+
+.main {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 0 30px;
+}
+
+/* LETRAS GIRANDO */
+/* NORIA  */
+
+.noria-square-conatiner {
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 110px;
+}
+
+.noria-square-conatiner::before {
+  content: "";
+  position: absolute;
+  width: var(--noria-square);
+  height: var(--noria-square);
+  border-radius: 50%;
+  border: 50px solid black;
+}
+
+.noria-circle {
+  width: var(--noria-circle);
+  height: var(--noria-circle);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.noria-circle-lente {
+  max-width: 165px;
+  margin: 0;
+}
+
+.noria-circle-lente img {
+  width: 100%
+}
+
+/* Letras noria */
+.noria-letters {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  top: calc(50% - var(--noria-letter));
+}
+
+.marquee {
+  color: var(--white);
+  font-family: Impact, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.gira-letras {
+  animation: animate 50s linear infinite;
+}
+
+@keyframes animate {
+  from {
+    transform: rotate(0deg)
+  }
+
+  to {
+    transform: rotate(360deg)
+  }
+}
+
+.marquee span {
+  position: absolute;
+  transform-origin: 0 100%;
+  height: var(--noria-letter);
+  width: 30px;
+  top: 0;
+}
+
+
+/* SECTIONS */
+.section-title__item {
+  color: var(--gray);
+  cursor: pointer;
+  transition: all var(--velocidad-transitions) ease-in-out;
+  font-size: 7rem;
+  position: relative;
+}
+
+.section-title__item:hover {
+  color: var(--white);
+}
+
+.section-title__item:hover:before,
+.section-title__item:hover:after {
+  color: var(--white);
+  border: 1px solid var(--white);
+  background-color: var(--white);
+}
+
+.section-title__item:hover:before {
+  animation: fadeInUp var(--velocidad-transitions-lineas) ease-in-out;
+}
+
+.section-title__item:hover:after {
+  animation: fadeInDown var(--velocidad-transitions-lineas) ease-in-out;
+}
+
+.section-title__item:before {
+  position: absolute;
+  content: "";
+  top: 10px;
+  bottom: 0;
+  left: 30px;
+  right: 0;
+  margin: auto;
+
+  width: 100%;
+  height: 0px;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.section-title__item:after {
+  position: absolute;
+  content: "";
+  top: -10px;
+  bottom: 0;
+  left: -30px;
+  right: 0;
+  margin: auto;
+
+  width: 100%;
+  height: 0px;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+
+/* Aparecer de arriba - abajo */
+.fadeInDown {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeInDown;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(-35%, -200%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Aparecer de abajo - arriba */
+.fadeInUp {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(35%, 200%, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+
+
+
+
+
+
+
+
+.chat {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 10px 2%;
+}
+
+.chat svg {
+  width: calc(var(--svg) + 10px);
+  height: calc(var(--svg) + 10px);
+}

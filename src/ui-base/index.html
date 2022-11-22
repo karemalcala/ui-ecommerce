@@ -8,7 +8,32 @@
     <title>lentes</title>
   </head>
   <body>
-    <header>hola</header>
+    <header>
+      <section class="pre-header">
+        <div>I F T</div>
+        <div>
+          <a href="mailto:lentestyle.cl@gmail.com"> lentestyle.cl@gmail.com </a>
+        </div>
+      </section>
+      <section class="header">
+        <div class="header__logo">
+          <figure class="header__logo__container">
+            <img
+              class="logo__image"
+              src="assets/logo-sin-fondo/letras-negras-horizontal-recortado.png"
+            />
+          </figure>
+        </div>
+        <div class="header__nav">
+          <div class="header__nav__links">
+            <a href="" class="header__link">Colecciones</a>
+            <a href="" class="header__link">Elige Tu Marco</a>
+          </div>
+          <a href="" class="header__link__carrito">Carrito</a>
+        </div>
+      </section>
+      <section class="hero"></section>
+    </header>
     <main>
       <!-- LETRAS GIRATORIAS -->
       <section class="noria-container">
@@ -247,7 +272,9 @@
     <script>
       noria = document.getElementById("noria-letters");
       span = document.getElementById("gira-letras");
-      textArray = "Tu Mejor Opción. Impacta con tu estilo.".split("");
+      textArray = "Tu Mejor Opción. Impacta con tu estilo."
+        .toLocaleUpperCase()
+        .split("");
 
       textArray.forEach((element, index) => {
         span.innerHTML += `<span style="transform: rotate(${
